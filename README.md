@@ -19,13 +19,6 @@ Padanjaly Ayurveda sells Ayurvedic products online (mainly Agnijith and Agnihari
 | [`source-reports/`](source-reports/) | The reports the final report is built from (see below) |
 | [`images/dashboard.jpg`](images/dashboard.jpg) | Dashboard screenshot |
 
-### Source reports
-
-| File | Content |
-|---|---|
-| `DA-003_WooCommerce_Data_Cleaning_Report.docx` | Data cleaning and quality report (7 cleaning steps, 690 records, 688 after cleaning) |
-| `Padanjaly_Sales_Performance_Report_2_Page.docx` | 2-page summary of the Power BI dashboard (KPIs, trends, validation checks) |
-| `Padanjaly_Ayurveda_Project_Report_Abyson.docx` | Customer analysis and business recommendations |
 
 ## Key findings
 
