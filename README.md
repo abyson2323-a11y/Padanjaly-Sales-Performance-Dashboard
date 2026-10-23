@@ -21,6 +21,8 @@ The report covers:
 |---|---|
 | `Padanjaly_Final_Report_v2.pdf` | Final 5-page report (best for reading and sharing) |
 | `Padanjaly_Final_Report_v2.docx` | Editable Word version of the same report |
+| `padanjaly-order-cleaning-dashboard_1.pbix` | Power BI working file (data model, Power Query steps, DAX measures, dashboard) |
+| `Dashboard_Export.pdf` | PDF export of the final Power BI dashboard |
 
 ## Key findings
 
@@ -38,7 +40,64 @@ The report covers:
 - Cleaning: guest flags, standardised states, countries, payments and product names, date and time split, zero-value test orders separated, and raw data kept for traceability.
 - INR and USD are reported separately and are not added together.
 
+## Power BI Model
+
+- **Data table:** `padanjaly-order export0 csv`
+- **Measures table:** `Rates` (holds all five KPI measures)
+- **Visuals:** KPI cards, revenue trend by year/quarter/month, order-status donut, top 10 products by sales, yearly sales by product, billing-country map
+- **Text on each chart:** a trend and an insight written under every visual
+
+## KPI Definitions and Validation
+
+All five KPI measures are in the `Rates` table of the Power BI model. The dashboard values below match the report.
+
+| KPI | Dashboard value | Definition (DAX) | Status |
+|---|---|---|---|
+| Total Sales INR | ₹1.5M | `<paste DAX>` | To confirm |
+| Total Sales USD | $18.2K | `<paste DAX>` | To confirm |
+| Product 1 Sales | 1.25M | `<paste DAX>` | To confirm |
+| Total Orders | 690 | `<paste DAX>` | To confirm |
+| Avg Order Value | 2.15K | `<paste DAX>` | To confirm |
+
+Assumptions to confirm in the model:
+- INR and USD sales are kept separate and never added together.
+- Total Orders counts distinct order IDs.
+- Orders in "processing" status (285 of 690) are included in total sales.
+- Data runs through July 2026, so 2026 is a partial year.
+
+## Report contents
+
+1. Executive summary
+2. Data cleaning (WooCommerce export, 690 records, 688 after cleaning)
+3. Sales dashboard and KPIs
+4. Revenue trend
+5. Product performance
+6. Orders and payments
+7. Customers
+8. Markets and geography, website and pricing
+9. Where the source reports disagree
+10. Recommendations
+11. Expected impact (illustrative)
+12. Conclusion
+
 ## Recommendations (summary)
 
 1. **0 to 30 days:** clear the 285 processing orders; run a day-35 repeat-purchase offer; test an Agnijith + Agnihari combo; fix website currency, booking button and health-claim wording; pilot COD in Kerala.
-2
+2. **1 to 3 months:** repeat the early-2026 campaign approach; test subscriptions, B2B discounts and a loyalty programme.
+3. **3 to 12 months:** build an international storefront; test advertising focus on the top product and top states; test pack-size tiers.
+
+## Open issues
+
+The source reports disagree on a few points. Section 9 of the report lists them:
+- order count (690 on the dashboard vs 688 after cleaning)
+- period covered (2023 to 2025 in one report, through July 2026 on the dashboard)
+- revenue counted from all orders, including those still processing
+- pack sizes (25 g on the website vs a proposed 45 g trial pack)
+
+## Tools
+
+Microsoft Power BI, Power Query, DAX, WooCommerce data export.
+
+## Notes
+
+Figures from the supplied reports have not been independently verified. The website's health claims and review rating are unverified. This is not a sales audit or medical assessment.
