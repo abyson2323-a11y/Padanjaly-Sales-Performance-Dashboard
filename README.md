@@ -8,21 +8,24 @@ Sales performance, customer and market analysis for Padanjaly Ayurveda (Power BI
 
 Padanjaly Ayurveda sells Ayurvedic products online (mainly Agnijith and Agnihari creams) through a WooCommerce store. This project turns 690 orders into a Power BI sales dashboard and a combined business report. The report brings together four sources: the sales dashboard report, the Agnijith product and market research, the WooCommerce data-cleaning report, and the customer project report.
 
-The report covers:
-- how sales have changed over time and what drove the peaks
-- which products carry the business and where the risk is
-- who the customers are, and how many come back
-- which markets matter, in India and abroad
-- what to fix on the website, and what to do next
+## Deliverables
 
-## Files
-
-| File | Description |
+| Folder / file | Description |
 |---|---|
-| `Padanjaly_Final_Report_v2.pdf` | Final 5-page report (best for reading and sharing) |
-| `Padanjaly_Final_Report_v2.docx` | Editable Word version of the same report |
-| `padanjaly-order-cleaning-dashboard_1.pbix` | Power BI working file (data model, Power Query steps, DAX measures, dashboard) |
-| `Dashboard_Export.pdf` | PDF export of the final Power BI dashboard |
+| [`powerbi/Padanjaly_Sales_Dashboard.pbix`](powerbi/Padanjaly_Sales_Dashboard.pbix) | Power BI working file: data model, Power Query steps, DAX measures and dashboard |
+| [`powerbi/Dashboard_Export.pdf`](powerbi/Dashboard_Export.pdf) | PDF export of the final dashboard |
+| [`reports/Padanjaly_Final_Report_v2.pdf`](reports/Padanjaly_Final_Report_v2.pdf) | Final 5-page business report (best for reading) |
+| [`reports/Padanjaly_Final_Report_v2.docx`](reports/Padanjaly_Final_Report_v2.docx) | Editable Word version of the final report |
+| [`source-reports/`](source-reports/) | The reports the final report is built from (see below) |
+| [`images/dashboard.jpg`](images/dashboard.jpg) | Dashboard screenshot |
+
+### Source reports
+
+| File | Content |
+|---|---|
+| `DA-003_WooCommerce_Data_Cleaning_Report.docx` | Data cleaning and quality report (7 cleaning steps, 690 records, 688 after cleaning) |
+| `Padanjaly_Sales_Performance_Report_2_Page.docx` | 2-page summary of the Power BI dashboard (KPIs, trends, validation checks) |
+| `Padanjaly_Ayurveda_Project_Report_Abyson.docx` | Customer analysis and business recommendations |
 
 ## Key findings
 
@@ -44,8 +47,8 @@ The report covers:
 
 - **Data table:** `padanjaly-order export0 csv`
 - **Measures table:** `Rates` (holds all five KPI measures)
-- **Visuals:** KPI cards, revenue trend by year/quarter/month, order-status donut, top 10 products by sales, yearly sales by product, billing-country map
-- **Text on each chart:** a trend and an insight written under every visual
+- **Page 1:** KPI cards, revenue trend by year/quarter/month, order-status donut, top 10 products by sales, yearly sales by product, billing-country map, with a trend and an insight written under each chart
+- **Page 2:** Total Sales INR by order date (KPI visual)
 
 ## KPI Definitions and Validation
 
@@ -68,7 +71,7 @@ Assumptions to confirm in the model:
 ## Report contents
 
 1. Executive summary
-2. Data cleaning (WooCommerce export, 690 records, 688 after cleaning)
+2. Data cleaning
 3. Sales dashboard and KPIs
 4. Revenue trend
 5. Product performance
@@ -88,7 +91,6 @@ Assumptions to confirm in the model:
 
 ## Open issues
 
-The source reports disagree on a few points. Section 9 of the report lists them:
 - order count (690 on the dashboard vs 688 after cleaning)
 - period covered (2023 to 2025 in one report, through July 2026 on the dashboard)
 - revenue counted from all orders, including those still processing
