@@ -12,8 +12,10 @@ Padanjaly Ayurveda sells Ayurvedic products online (mainly Agnijith and Agnihari
 
 | File | Description |
 |---|---|
-| [`padanjaly-order-cleaning-dashboard-POwer.pbix`](padanjaly-order-cleaning-dashboard-POwer.pbix) | Power BI working file: data model, Power Query steps, DAX measures and dashboard |
-| [`Dashboard_Export.pdf`](Dashboard_Export.pdf) | PDF export of the final dashboard |
+| `padanjaly-order-cleaning-dashboard-POwer.pbix` | Power BI working file containing the data model, Power Query steps, DAX measures, and dashboard |
+| `Dashboard_Export.pdf` | PDF export of the final dashboard |
+| `padanjaly-order-dashboard-location-geography.pbix` | Power BI dashboard focused on sales geography and location analysis |
+| `padanjaly-order-dashboard-location-geography.pdf` | PDF export of the Sales Geography Dashboard |
 
 ## Dashboard findings
 
