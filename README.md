@@ -1,73 +1,102 @@
-# Padanjaly Sales Performance Dashboard
+# Padanjaly Sales Performance & Geography Dashboard
 
-Power BI sales dashboard for Padanjaly Ayurveda, built from 690 WooCommerce orders.
-
-<img width="1320" height="797" alt="Sales Performance Dashboard" src="https://github.com/user-attachments/assets/48deb9d4-7ddd-475b-80fb-5645ecc7cf00" />
+A Power BI project analyzing 690 WooCommerce orders for Padanjaly Ayurveda to understand sales performance, product trends, order status, and geographic distribution.
 
 ## Overview
 
-Padanjaly Ayurveda sells Ayurvedic products online (mainly Agnijith and Agnihari creams) through a WooCommerce store. This project cleans the order export and turns it into a Power BI dashboard covering revenue, products, order status and billing countries. Each chart has a short trend and insight written under it.
+Built two Power BI dashboards using Power Query and DAX:
 
-## Deliverables
+- **Sales Performance:** Revenue trends, product sales, order status, and KPIs.
+- **Sales Geography:** State-wise sales, country distribution, geographic mapping, and domestic versus international order shares.
+
+## Project Files
 
 | File | Description |
 |---|---|
-| `padanjaly-order-cleaning-dashboard-POwer.pbix` | Power BI working file containing the data model, Power Query steps, DAX measures, and dashboard |
-| `Dashboard_Export.pdf` | PDF export of the final dashboard |
-| `padanjaly-order--dashboard-location-geography.pbix` | Power BI dashboard focused on sales geography and location analysis |
-| `padanjaly-order--dashboard-location-geography.pdf` | PDF export of the Sales Geography Dashboard |
+| `padanjaly-order-cleaning-dashboard-POwer.pbix` | Sales Performance Dashboard |
+| `padanjaly-order-cleaning-dashboard-pdf.pdf` | Sales dashboard PDF |
+| `updated-padanjaly--dashboard-Sales-geography.pbix` | Sales Geography Dashboard |
+| `updated-padanjaly--dashboard-Sales-geography Copy.pdf` | Geography dashboard PDF |
 
-## Dashboard findings
+## Key Findings
 
-- **Sales:** ₹1.5M (INR) and $18.2K (USD) from 690 orders; average order value 2.15K.
-- **Growth:** about 0.08M (2023), 0.41M (2024), 0.53M (2025) and 0.42M for 2026 to July. Peaks of 101K in January and 125K around April/May 2026 point to campaign-driven sales, followed by dips to 18K to 26K.
-- **One product carries the business:** Agnijith 90 gms is 0.93M (about 62% of sales); the next product is 0.15M and eight products are below 0.07M.
-- **Order status:** 405 orders completed (58.7%) and 285 processing (41.3%).
-- **Geography:** billing orders come from India, the USA, UK, UAE, Europe and Australia; USD sales are only $18.2K.
+- **Total sales:** Approximately ₹1.5M and $18.2K, reported separately.
+- **Total orders:** 690, with 405 completed and 285 processing.
+- **Sales trend:** Revenue increased from ₹0.08M in 2023 to ₹0.53M in 2025, reaching ₹0.42M through July 2026.
+- **Top product:** Agnijith 90 gms generated approximately ₹0.93M in sales.
+- **Geography:** Kerala leads the visible state-wise sales chart at approximately ₹0.39M.
+- **Order distribution:** International orders account for 11.74%, while domestic orders account for 88.26%.
 
-## Data
+## Data Preparation
 
-- Source: WooCommerce order export (690 records).
-- Cleaning: guest flags, standardised states, countries, payments and product names, date and time split, zero-value test orders separated, and raw data kept for traceability.
-- INR and USD are reported separately and are not added together.
+- Cleaned and standardized product, state, country, and payment fields.
+- Prepared date fields for time-based analysis.
+- Separated zero-value test orders for traceability.
+- Kept INR and USD sales separate.
 
-## Power BI Model
+## DAX Measures
 
-- **Data table:** `padanjaly-order export0 csv`
-- **Measures table:** `Rates` (holds all five KPI measures)
-- **Page 1:** KPI cards, revenue trend by year/quarter/month, order-status donut, top 10 products by sales, yearly sales by product, billing-country map
-- **Page 2:** Total Sales INR by order date (KPI visual)
+### Total Orders
+```dax
+Total Orders =
+DISTINCTCOUNT(
+    'padanjaly-order export0 csv'[order_id]
+)
+```
 
-## KPI Definitions and Validation
+### Total Sales INR
+```dax
+Total Sales INR =
+SUM(
+    'padanjaly-order export0 csv'[order_total]
+)
+```
 
-All five KPI measures are in the `Rates` table of the Power BI model.
+### Total Sales USD
+```dax
+Total Sales USD =
+VAR Rate =
+    FIRSTNONBLANK(
+        'padanjaly-order export0 csv'[usd_inr_rate],
+        1
+    )
+RETURN
+    DIVIDE([Total Sales INR], Rate)
+```
 
-| KPI | Dashboard value | Definition (DAX) | Status |
-|---|---|---|---|
-| Total Sales INR | ₹1.5M | `<paste DAX>` | To confirm |
-| Total Sales USD | $18.2K | `<paste DAX>` | To confirm |
-| Product 1 Sales | 1.25M | `<paste DAX>` | To confirm |
-| Total Orders | 690 | `<paste DAX>` | To confirm |
-| Avg Order Value | 2.15K | `<paste DAX>` | To confirm |
+### International Share %
+```dax
+International Share % =
+DIVIDE(
+    [International Orders],
+    [Total Orders]
+)
+```
 
-Assumptions to confirm in the model:
-- INR and USD sales are kept separate and never added together.
-- Total Orders counts distinct order IDs.
-- Orders in "processing" status (285 of 690) are included in total sales.
-- Data runs through July 2026, so 2026 is a partial year.
+### Domestic Share %
+```dax
+Domestic Share % =
+1 - [International Share %]
+```
 
-## Business insights from the dashboard
+*Note: The international and domestic measures calculate order shares, not sales revenue shares. Validate the USD conversion rate methodology before relying on the converted total.*
 
-1. Clear the 285 processing orders (about ₹6 lakh, estimate) to unlock revenue.
-2. Repeat the January and April/May 2026 campaign approach to avoid dips.
-3. Reduce single-product risk: push the Agnijith 5-Pack and combo packs to build a second hero product.
-4. Bring back combo packs and multi-packs; 2025 had the best product mix and 2026 has less variety.
-5. Test a 5-pack bundle for the international (NRI) market, since USD sales are low.
+## Business Recommendations
 
-## Tools
+1. Review processing orders and investigate delays.
+2. Analyze peak sales months to identify successful campaigns.
+3. Promote multipacks and combo products to diversify revenue.
+4. Use geographic insights to prioritize key markets.
+5. Explore opportunities to grow international orders.
 
-Microsoft Power BI, Power Query, DAX, WooCommerce data export.
+## Tools & Technologies
 
-## Notes
+- Microsoft Power BI
+- Power Query
+- DAX
+- WooCommerce
+- Data Cleaning and Visualization
 
-Dashboard values were taken from the Power BI file and its PDF export. Figures have not been independently verified.
+## Limitations
+
+Dashboard figures have not been independently audited. The 2026 data covers January through July, so it is a partial-year comparison. KPI values and currency conversions should be validated against the Power BI model.
