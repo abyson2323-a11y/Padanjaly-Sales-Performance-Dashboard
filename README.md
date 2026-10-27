@@ -6,8 +6,8 @@ A Power BI project analyzing 690 WooCommerce orders for Padanjaly Ayurveda to un
 
 Built two Power BI dashboards using Power Query and DAX:
 
-- **Sales Performance:** Revenue trends, product sales, order status, and KPIs.
-- **Sales Geography:** State-wise sales, country distribution, geographic mapping, and domestic versus international order shares.
+- **Sales Performance:** Revenue trends, product sales, order status, and KPI-cards.
+- **Sales Geography:** State-wise Sales Contribution , Geographical Sales Distribution Across States, Order Distribution by Country, Annual Sales Trend, Top 10 Country by Sales  and Domestic vs International Share of Sales.
 
 ## Project Files
 
@@ -38,45 +38,30 @@ Built two Power BI dashboards using Power Query and DAX:
 
 ### Total Orders
 ```dax
-Total Orders =
-DISTINCTCOUNT(
-    'padanjaly-order export0 csv'[order_id]
-)
+Total Orders = DISTINCTCOUNT('padanjaly-order export0 csv'[order_id])
 ```
 
 ### Total Sales INR
 ```dax
-Total Sales INR =
-SUM(
-    'padanjaly-order export0 csv'[order_total]
-)
+Total Sales INR = SUM('padanjaly-order export0 csv'[order_subtotal])
 ```
 
 ### Total Sales USD
 ```dax
-Total Sales USD =
-VAR Rate =
-    FIRSTNONBLANK(
-        'padanjaly-order export0 csv'[usd_inr_rate],
-        1
-    )
-RETURN
-    DIVIDE([Total Sales INR], Rate)
+Total Sales USD = 
+VAR Rate = FIRSTNONBLANK('padanjaly-order export0 csv'[usd_inr_rate], 1)
+RETURN DIVIDE([Total Sales INR], Rate)
 ```
 
 ### International Share %
 ```dax
-International Share % =
-DIVIDE(
-    [International Orders],
-    [Total Orders]
-)
+International Share % = 
+DIVIDE ( [International Orders], [Total Orders] )
 ```
 
 ### Domestic Share %
 ```dax
-Domestic Share % =
-1 - [International Share %]
+Domestic Share % = 1 - [International Share %]
 ```
 
 *Note: The international and domestic measures calculate order shares, not sales revenue shares. Validate the USD conversion rate methodology before relying on the converted total.*
