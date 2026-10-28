@@ -1,10 +1,12 @@
 Padanjaly E-Commerce Analytics (Power BI)
 A Power BI project that analyses WooCommerce order data from the Padanjaly store, from January 2023 to July 2026. It has four dashboards covering sales performance, sales geography, product demand and customer purchase behavior.
+
 Tools Used:
 •	Power BI Desktop
 •	DAX: (measures and calculated columns)
 •	WooCommerce order export (CSV)
-Dashboards:
+
+**Dashboards:**
 1. Sales Performance Dashboard:
 Tracks order volume, order status and revenue over time.
 Key areas:
@@ -12,14 +14,16 @@ Key areas:
 •	Yearly sales trend
 •	Top-selling products by sales value
 •	Sales reported separately in INR and USD
+
 2. Sales Geography Dashboard:
 Shows where orders and sales come from.
 Key areas:
 •	State-wise and country-wise sales
 •	Domestic vs international order share
 •	Leading states and markets
+
 3. Product Demand Dashboard:
-Analyzes product-level demand, quantity sold, monthly trends, and the relationship between product quantity and revenue.
+Analyses product-level demand, quantity sold, monthly trends, and the relationship between product quantity and revenue.
 Key areas:
 •	Total products and total quantity
 •	Monthly product demand from January 2023 to July 2026
@@ -27,6 +31,7 @@ Key areas:
 •	Yearly product demand
 •	Product quantity versus revenue
 •	Top-performing products by quantity and revenue
+
 4. Customer Purchase Behavior Dashboard:
 Analyzes how customers buy, how often they return, and how orders change over time.
 Key areas:
@@ -37,17 +42,21 @@ Key areas:
 •	Orders by status
 •	Top 10 customers by purchase value
 •	Filters for country, state, city, status and order date
-Project Files:
-File	Description
-padanjaly-order-cleaning-dashboard-POwer.pbix	Sales Performance Dashboard
-padanjaly-order-cleaning-dashboard-pdf.pdf	Sales Performance Dashboard PDF
-updated-padanjaly--dashboard-Sales-geography.pbix	Sales Geography Dashboard
-updated-padanjaly--dashboard-Sales-geography Copy.pdf	Sales Geography Dashboard PDF
-product-PBIX-dashboard--padanjaly.pbix	Product Demand Dashboard
-product--dashboard--padanjaly.pdf	Product Demand Dashboard PDF
-customer-PBIX-dashboard--padanjaly.pbix	Customer Purchase Behavior Dashboard
-customer-PBIX-dashboard--padanjaly Copy.pdf	Customer Purchase Behavior Dashboard PDF
-Key Findings:
+
+## Project Files
+
+| File | Description |
+|---|---|
+| [padanjaly-order-cleaning-dashboard-POwer.pbix](padanjaly-order-cleaning-dashboard-POwer.pbix) | Sales Performance Dashboard |
+| [padanjaly-order-cleaning-dashboard-pdf.pdf](padanjaly-order-cleaning-dashboard-pdf.pdf) | Sales Performance Dashboard PDF |
+| [updated-padanjaly--dashboard-Sales-geography.pbix](updated-padanjaly--dashboard-Sales-geography.pbix) | Sales Geography Dashboard |
+| [updated-padanjaly--dashboard-Sales-geography Copy.pdf](updated-padanjaly--dashboard-Sales-geography%20Copy.pdf) | Sales Geography Dashboard PDF |
+| [product-PBIX-dashboard--padanjaly.pbix](product-PBIX-dashboard--padanjaly.pbix) | Product Demand Dashboard |
+| [product--dashboard--padanjaly.pdf](product--dashboard--padanjaly.pdf) | Product Demand Dashboard PDF |
+| [customer-PBIX-dashboard--padanjaly.pbix](customer-PBIX-dashboard--padanjaly.pbix) | Customer Purchase Behavior Dashboard |
+| [customer-PBIX-dashboard--padanjaly Copy.pdf](customer-PBIX-dashboard--padanjaly%20Copy.pdf) | Customer Purchase Behavior Dashboard PDF |
+
+**Key Findings:**
 Sales Performance:
 •	Total orders: 690 orders analyzed.
 •	Order status: 405 completed orders and 285 processing orders.
@@ -55,17 +64,20 @@ Sales Performance:
 •	2026 sales: Approximately ₹0.42 million through July 2026.
 •	Top product: Agnijith 90 gms generated approximately ₹0.93 million in sales.
 •	Currency reporting: INR and USD sales are reported separately.
+
 Sales Geography:
 •	Leading state: Kerala, with approximately ₹0.39 million in sales in the visible state-wise chart.
 •	Domestic orders: 88.26% of total orders.
 •	International orders: 11.74% of total orders.
 •	Geographic analysis: The dashboard compares state and country performance to identify important sales markets.
+
 Product Demand:
 •	Total products: 11.
 •	Total quantity: Approximately 1.08K units.
 •	Top quantity product: Agnijith 90 gms, with 508 units.
 •	Second-highest quantity product: Agnihari Kasmeerini 90gms, with 252 units.
 •	Top revenue product: Agnijith 90 gms.
+
 Customer Purchase Behaviour:
 •	Registered customers: 323 customers and 690 total orders analyzed.
 •	One-time buyers: 302 customers (about 93.5%) placed only one order.
@@ -73,21 +85,23 @@ Customer Purchase Behaviour:
 •	Order frequency: 19 customers ordered twice, 1 ordered three times and 1 ordered five or more times.
 •	Order trend: Monthly orders grew from about 3 to 5 in early 2023 to 20 to 40 by 2025 and early 2026, with a spike of roughly 80 orders just before July 2026. The drop after the spike is likely because July 2026 is a partial month (data ends on 14 Jul 2026).
 •	Retention opportunity: Repeat purchase is the biggest area for growth. Follow-ups such as a thank-you coupon or a reorder reminder after the first order would target the right group.
+
+
 DAX-Measures:
 Core Measures:
-Total Orders:
+•	Total Orders:
 Dax::
 Total Orders =
 DISTINCTCOUNT(
     'padanjaly-order export0 csv'[order_id]
 )
-Total Sales INR:
+•	Total Sales INR:
 Dax:
 Total Sales INR =
 SUM(
     'padanjaly-order export0 csv'[order_subtotal]
 )
-Total Sales USD:
+•	Total Sales USD:
 Dax:
 Total Sales USD =
 VAR Rate =
@@ -102,19 +116,19 @@ RETURN
     )
 Note: Validate the exchange-rate methodology and currency-specific totals before using the converted figures for financial reporting.
 Geography Measures:
-International Share %:
+•	International Share %:
 Dax:
 International Share % =
 DIVIDE(
     [International Orders],
     [Total Orders]
 )
-Domestic Share %:
+•	Domestic Share %:
 Dax:
 Domestic Share % =
 1 - [International Share %]
 Product Measures:
-Average Quantity per Order:
+•	Average Quantity per Order:
 Dax:
 Average Quantity per Order =
 DIVIDE(
@@ -122,7 +136,7 @@ DIVIDE(
     DISTINCTCOUNT('full_Product'[order_id]),
     0
 )
-Most Sold Product:
+•	Most Sold Product:
 Dax:
 Most Sold Product =
 VAR ProductSales =
@@ -144,35 +158,35 @@ RETURN
         ", "
     )
 Customer Purchase Behavior Measures:
-Registered Customers:
+•	Registered Customers:
 Dax:
 Registered Customers =
 CALCULATE(
     DISTINCTCOUNT('padanjaly-order export0 csv'[customer_id]),
     'padanjaly-order export0 csv'[customer_id] <> 0
 )
-Repeat Customers:
+•	Repeat Customers:
 Dax:
 Repeat Customers =
 CALCULATE(
     DISTINCTCOUNT('padanjaly-order export0 csv'[customer_id]),
     'padanjaly-order export0 csv'[Customer Type] = "Repeat"
 )
-Repeat Rate:
+•	Repeat Rate:
 Dax:
 Repeat Rate =
 DIVIDE(
     [Repeat Customers],
     [Registered Customers]
 )
-Registered Orders:
+•	Registered Orders:
 Dax:
 Registered Orders =
 CALCULATE(
     [Total Orders],
     'padanjaly-order export0 csv'[customer_id] <> 0
 )
-Orders per Customer;
+•	Orders per Customer;
 Dax:
 Orders per Customer =
 DIVIDE(
@@ -183,7 +197,7 @@ Customer Purchase Value:
 Dax:
 Customer Purchase Value =
 SUM('padanjaly-order export0 csv'[order_subtotal])
-Average Customer Value:
+•	Average Customer Value:
 Dax:
 Average Customer Value =
 DIVIDE(
@@ -195,7 +209,7 @@ DIVIDE(
 )
 Customer Calculated Columns:
 These are created as New column in the main table, not as measures.
-Customer Type:
+•	Customer Type:
 Dax:
 Customer Type =
 VAR CustID = 'padanjaly-order export0 csv'[customer_id]
@@ -213,7 +227,7 @@ RETURN
         "Guest",
         IF(OrderCnt > 1, "Repeat", "First-Time")
     )
-Customer Order Count:
+•	Customer Order Count:
 Dax:
 Customer Order Count =
 VAR CustID = 'padanjaly-order export0 csv'[customer_id]
@@ -229,7 +243,7 @@ IF(
         )
     )
 )
-Order Frequency Band:
+•	Order Frequency Band:
 Dax:
 Order Frequency Band =
 VAR Orders = 'padanjaly-order export0 csv'[Customer Order Count]
@@ -240,7 +254,7 @@ RETURN
         Orders >= 5, "5+",
         FORMAT(Orders, "0")
     )
-Order Frequency Sort:
+•	Order Frequency Sort:
 Used to sort Order Frequency Band as 1, 2, 3, 5+ (Column tools → Sort by column).
 Dax:
 Order Frequency Sort =
@@ -251,11 +265,6 @@ RETURN
         BLANK(),
         MIN(Orders, 5)
     )
-Customer Dashboard Charts:
-Chart	Type	Fields
-Monthly Purchase Trend	Line chart	X: Year-Month, Y: distinct count of order_id
-Order Frequency Distribution	Clustered column chart	X: Order Frequency Band, Y: distinct count of customer_id
-First-Time vs Repeat Customers	Donut chart	Legend: Customer Type, Values: distinct count of customer_id
-Orders by Status	Clustered bar chart	Y: status, X: distinct count of order_id
+
 Top 10 Customers by Value	Clustered bar chart	Y: customer_id, X: Customer Purchase Value, Top N filter = 10
 
