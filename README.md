@@ -87,22 +87,31 @@ Customer Purchase Behaviour:
 •	Retention opportunity: Repeat purchase is the biggest area for growth. Follow-ups such as a thank-you coupon or a reorder reminder after the first order would target the right group.
 
 
-DAX-Measures:
-Core Measures:
-•	Total Orders:
-Dax::
+## DAX Measures and Calculated Columns
+
+The following DAX measures and calculated columns were developed for the Padanjaly Sales and Customer Purchase Behavior dashboards in Power BI.
+
+### 1. Core Measures
+
+**Total Orders**
+```dax
 Total Orders =
 DISTINCTCOUNT(
     'padanjaly-order export0 csv'[order_id]
 )
-•	Total Sales INR:
-Dax:
+```
+
+**Total Sales INR**
+```dax
 Total Sales INR =
 SUM(
     'padanjaly-order export0 csv'[order_subtotal]
 )
-•	Total Sales USD:
-Dax:
+```
+
+**Total Sales USD**
+
+```dax
 Total Sales USD =
 VAR Rate =
     FIRSTNONBLANK(
@@ -114,30 +123,41 @@ RETURN
         [Total Sales INR],
         Rate
     )
-Note: Validate the exchange-rate methodology and currency-specific totals before using the converted figures for financial reporting.
-Geography Measures:
-•	International Share %:
-Dax:
+```
+
+> **Note:** Validate the exchange-rate methodology and currency-specific totals before using converted figures for financial reporting.
+
+### 2. Geography Measures
+
+**International Share %**
+```dax
 International Share % =
 DIVIDE(
     [International Orders],
     [Total Orders]
 )
-•	Domestic Share %:
-Dax:
+```
+
+**Domestic Share %**
+```dax
 Domestic Share % =
 1 - [International Share %]
-Product Measures:
-•	Average Quantity per Order:
-Dax:
+```
+
+### 3. Product Measures
+
+**Average Quantity per Order**
+```dax
 Average Quantity per Order =
 DIVIDE(
     SUM('full_Product'[Quantity]),
     DISTINCTCOUNT('full_Product'[order_id]),
     0
 )
-•	Most Sold Product:
-Dax:
+```
+
+**Most Sold Product**
+```dax
 Most Sold Product =
 VAR ProductSales =
     TOPN(
@@ -157,48 +177,67 @@ RETURN
         'full_Product'[Name],
         ", "
     )
-Customer Purchase Behavior Measures:
-•	Registered Customers:
-Dax:
+```
+
+### 4. Customer Purchase Behavior Measures
+
+**Registered Customers**
+```dax
 Registered Customers =
 CALCULATE(
     DISTINCTCOUNT('padanjaly-order export0 csv'[customer_id]),
     'padanjaly-order export0 csv'[customer_id] <> 0
 )
-•	Repeat Customers:
-Dax:
+```
+
+**Repeat Customers**
+```dax
 Repeat Customers =
 CALCULATE(
     DISTINCTCOUNT('padanjaly-order export0 csv'[customer_id]),
     'padanjaly-order export0 csv'[Customer Type] = "Repeat"
 )
-•	Repeat Rate:
-Dax:
+```
+
+**Repeat Rate**
+```dax
 Repeat Rate =
 DIVIDE(
     [Repeat Customers],
     [Registered Customers]
 )
-•	Registered Orders:
-Dax:
+```
+
+**Registered Orders**
+```dax
 Registered Orders =
 CALCULATE(
     [Total Orders],
     'padanjaly-order export0 csv'[customer_id] <> 0
 )
-•	Orders per Customer;
-Dax:
+```
+
+**Orders per Customer**
+```dax
 Orders per Customer =
 DIVIDE(
     [Registered Orders],
     [Registered Customers]
 )
-Customer Purchase Value:
-Dax:
+```
+
+### 5. Customer Purchase Value Measures
+
+**Customer Purchase Value**
+```dax
 Customer Purchase Value =
-SUM('padanjaly-order export0 csv'[order_subtotal])
-•	Average Customer Value:
-Dax:
+SUM(
+    'padanjaly-order export0 csv'[order_subtotal]
+)
+```
+
+**Average Customer Value**
+```dax
 Average Customer Value =
 DIVIDE(
     CALCULATE(
@@ -207,12 +246,17 @@ DIVIDE(
     ),
     [Registered Customers]
 )
-Customer Calculated Columns:
-These are created as New column in the main table, not as measures.
-•	Customer Type:
-Dax:
+```
+
+### 6. Customer Calculated Columns
+
+The following calculated columns were created using **New column** in the `padanjaly-order export0 csv` table, rather than using New measure.
+
+**Customer Type**
+```dax
 Customer Type =
-VAR CustID = 'padanjaly-order export0 csv'[customer_id]
+VAR CustID =
+    'padanjaly-order export0 csv'[customer_id]
 VAR OrderCnt =
     CALCULATE(
         DISTINCTCOUNT('padanjaly-order export0 csv'[order_id]),
@@ -227,26 +271,32 @@ RETURN
         "Guest",
         IF(OrderCnt > 1, "Repeat", "First-Time")
     )
-•	Customer Order Count:
-Dax:
+```
+
+**Customer Order Count**
+```dax
 Customer Order Count =
-VAR CustID = 'padanjaly-order export0 csv'[customer_id]
+VAR CustID =
+    'padanjaly-order export0 csv'[customer_id]
 RETURN
-IF(
-    ISBLANK(CustID) || CustID = 0,
-    BLANK(),
-    CALCULATE(
-        DISTINCTCOUNT('padanjaly-order export0 csv'[order_id]),
-        ALLEXCEPT(
-            'padanjaly-order export0 csv',
-            'padanjaly-order export0 csv'[customer_id]
+    IF(
+        ISBLANK(CustID) || CustID = 0,
+        BLANK(),
+        CALCULATE(
+            DISTINCTCOUNT('padanjaly-order export0 csv'[order_id]),
+            ALLEXCEPT(
+                'padanjaly-order export0 csv',
+                'padanjaly-order export0 csv'[customer_id]
+            )
         )
     )
-)
-•	Order Frequency Band:
-Dax:
+```
+
+**Order Frequency Band**
+```dax
 Order Frequency Band =
-VAR Orders = 'padanjaly-order export0 csv'[Customer Order Count]
+VAR Orders =
+    'padanjaly-order export0 csv'[Customer Order Count]
 RETURN
     SWITCH(
         TRUE(),
@@ -254,17 +304,30 @@ RETURN
         Orders >= 5, "5+",
         FORMAT(Orders, "0")
     )
-•	Order Frequency Sort:
-Used to sort Order Frequency Band as 1, 2, 3, 5+ (Column tools → Sort by column).
-Dax:
+```
+
+**Order Frequency Sort**
+```dax
 Order Frequency Sort =
-VAR Orders = 'padanjaly-order export0 csv'[Customer Order Count]
+VAR Orders =
+    'padanjaly-order export0 csv'[Customer Order Count]
 RETURN
     IF(
         ISBLANK(Orders),
         BLANK(),
         MIN(Orders, 5)
     )
+```
 
-Top 10 Customers by Value	Clustered bar chart	Y: customer_id, X: Customer Purchase Value, Top N filter = 10
+The `Order Frequency Sort` column is used to sort `Order Frequency Band` in ascending order through **Column tools → Sort by column**, keeping the categories in the intended order: `1`, `2`, `3`, `4`, `5+`.
 
+---
+
+### Implementation Notes
+
+- Measures calculate values dynamically according to the report's filter context.
+- Calculated columns classify customers and assign order-frequency categories at the row level.
+- Customer analysis excludes guest IDs represented by `0` or blank values where specified.
+- Percentage measures such as `Repeat Rate`, `International Share %`, and `Domestic Share %` should be formatted as percentages in Power BI.
+- Confirm that the `[International Orders]` measure exists and that the model's relationships support the intended geographic and product calculations.
+- Validate the exchange-rate calculation and the meaning of `order_subtotal` before interpreting sales measures as final financial totals.
