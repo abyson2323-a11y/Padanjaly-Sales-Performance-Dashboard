@@ -1,134 +1,112 @@
-# Padanjaly Business Intelligence Dashboard Suite
+Padanjaly E-Commerce Analytics (Power BI)
 
-A Power BI project analyzing WooCommerce data for Padanjaly Ayurveda to understand sales performance, product demand, and geographic sales distribution. The project includes three interactive dashboards developed using Microsoft Power BI, Power Query, and DAX.
+A Power BI project that analyses WooCommerce order data from the Padanjaly store, from January 2023 to July 2026. It has four dashboards covering sales performance, sales geography, product demand and customer purchase behavior.
 
-## Project Overview
+**Tools Used**
+Power BI Desktop
+DAX (measures and calculated columns)
+WooCommerce order export (CSV)
 
-This project transforms WooCommerce data into interactive dashboards to support business analysis and data-driven decision-making.
+**Dashboards**
+**1. Sales Performance Dashboard**
 
-The project contains three dashboards:
+Tracks order volume, order status and revenue over time.
 
-### 1. Sales Performance Dashboard
+Key areas:
 
-Analyzes overall sales performance, revenue trends, product sales, order status, and key business metrics.
+Total orders and order status (completed vs processing)
+Yearly sales trend
+Top-selling products by sales value
+Sales reported separately in INR and USD
 
-**Key areas:**
-- Total sales and order KPIs
-- Revenue trends over time
-- Product sales performance
-- Order status distribution
-- Annual sales comparison
+**2. Sales Geography Dashboard**
 
-### 2. Sales Geography Dashboard
+Shows where orders and sales come from.
 
-Analyzes the geographic distribution of sales across domestic and international markets.
+Key areas:
 
-**Key areas:**
-- State-wise sales contribution
-- Geographic sales distribution across states
-- Order distribution by country
-- Annual sales trends
-- Top 10 countries by sales
-- Domestic versus international share of orders
+State-wise and country-wise sales
+Domestic vs international order share
+Leading states and markets
 
-### 3. Product Demand Dashboard
+**3. Product Demand Dashboard**
 
 Analyzes product-level demand, quantity sold, monthly trends, and the relationship between product quantity and revenue.
 
+Key areas:
+
+Total products and total quantity
+Monthly product demand from January 2023 to July 2026
+Top 10 products by quantity
+Yearly product demand
+Product quantity versus revenue
+Top-performing products by quantity and revenue
+4. Customer Purchase Behavior Dashboard
+
+Analyzes how customers buy, how often they return, and how orders change over time.
+
 **Key areas:**
-- Total products and total quantity
-- Monthly product demand from January 2023 to July 2026
-- Top 10 products by quantity
-- Yearly product demand
-- Product quantity versus revenue
-- Top-performing products by quantity and revenue
 
-## Project Files
+Registered customers, total orders and repeat customers
+Monthly order trend from January 2023 to July 2026
+Order frequency distribution (1, 2, 3 and 5+ orders)
+First-time vs repeat customers
+Orders by status
+Top 10 customers by purchase value
+Filters for country, state, city, status and order date
+Project Files
+File	Description
+padanjaly-order-cleaning-dashboard-POwer.pbix	Sales Performance Dashboard
+padanjaly-order-cleaning-dashboard-pdf.pdf	Sales Performance Dashboard PDF
+updated-padanjaly--dashboard-Sales-geography.pbix	Sales Geography Dashboard
+updated-padanjaly--dashboard-Sales-geography Copy.pdf	Sales Geography Dashboard PDF
+product-PBIX-dashboard--padanjaly.pbix	Product Demand Dashboard
+product--dashboard--padanjaly.pdf	Product Demand Dashboard PDF
+customer-PBIX-dashboard--padanjaly.pbix	Customer Purchase Behavior Dashboard
+customer-PBIX-dashboard--padanjaly Copy.pdf	Customer Purchase Behavior Dashboard PDF
+Key Findings
+Sales Performance
+Total orders: 690 orders analyzed.
+Order status: 405 completed orders and 285 processing orders.
+Sales performance: Revenue increased from approximately ₹0.08 million in 2023 to ₹0.53 million in 2025.
+2026 sales: Approximately ₹0.42 million through July 2026.
+Top product: Agnijith 90 gms generated approximately ₹0.93 million in sales.
+Currency reporting: INR and USD sales are reported separately.
+Sales Geography
+Leading state: Kerala, with approximately ₹0.39 million in sales in the visible state-wise chart.
+Domestic orders: 88.26% of total orders.
+International orders: 11.74% of total orders.
+Geographic analysis: The dashboard compares state and country performance to identify important sales markets.
+Product Demand
+Total products: 11.
+Total quantity: Approximately 1.08K units.
+Top quantity product: Agnijith 90 gms, with 508 units.
+Second-highest quantity product: Agnihari Kasmeerini 90gms, with 252 units.
+Top revenue product: Agnijith 90 gms.
+Customer Purchase Behavior
+Registered customers: 323 customers and 690 total orders analyzed.
+One-time buyers: 302 customers (about 93.5%) placed only one order.
+Repeat buyers: About 6.5% of customers placed more than one order.
+Order frequency: 19 customers ordered twice, 1 ordered three times and 1 ordered five or more times.
+Order trend: Monthly orders grew from about 3 to 5 in early 2023 to 20 to 40 by 2025 and early 2026, with a spike of roughly 80 orders just before July 2026. The drop after the spike is likely because July 2026 is a partial month (data ends on 14 Jul 2026).
+Retention opportunity: Repeat purchase is the biggest area for growth. Follow-ups such as a thank-you coupon or a reorder reminder after the first order would target the right group.
 
-| File | Description |
-|---|---|
-| `padanjaly-order-cleaning-dashboard-POwer.pbix` | Sales Performance Dashboard |
-| `padanjaly-order-cleaning-dashboard-pdf.pdf` | Sales Performance Dashboard PDF |
-| `updated-padanjaly--dashboard-Sales-geography.pbix` | Sales Geography Dashboard |
-| `updated-padanjaly--dashboard-Sales-geography Copy.pdf` | Sales Geography Dashboard PDF |
-| `product-PBIX-dashboard--padanjaly.pbix` | Product Demand Dashboard |
-| `product--dashboard--padanjaly.pdf` | Product Demand Dashboard PDF |
-
-The `.pbix` files contain the Power BI reports, while the PDF files provide exported dashboard views.
-
-## Key Findings
-
-### Sales Performance
-
-- **Total orders:** 690 orders analyzed.
-- **Order status:** 405 completed orders and 285 processing orders.
-- **Sales performance:** Revenue increased from approximately ₹0.08 million in 2023 to ₹0.53 million in 2025.
-- **2026 sales:** Approximately ₹0.42 million through July 2026.
-- **Top product:** Agnijith 90 gms generated approximately ₹0.93 million in sales.
-- **Currency reporting:** INR and USD sales are reported separately.
-
-### Sales Geography
-
-- **Leading state:** Kerala, with approximately ₹0.39 million in sales in the visible state-wise chart.
-- **Domestic orders:** 88.26% of total orders.
-- **International orders:** 11.74% of total orders.
-- **Geographic analysis:** The dashboard compares state and country performance to identify important sales markets.
-
-### Product Demand
-
-- **Total products:** 11.
-- **Total quantity:** Approximately 1.08K units.
-- **Top quantity product:** Agnijith 90 gms, with 508 units.
-- **Second-highest quantity product:** Agnihari Kasmeerini 90gms, with 252 units.
-- **Top revenue product:** Agnijith 90 gms.
-
-**Yearly product demand:**
-
-| Year | Quantity |
-|---|---:|
-| 2023 | 110 |
-| 2024 | 243 |
-| 2025 | 364 |
-| 2026 (through July) | 363 |
-
-Product demand increased substantially between 2023 and 2025. The 2026 figure represents only a partial year and should not be interpreted as a full-year comparison.
-
-## Data Preparation
-
-Data preparation and transformation were performed to improve consistency and support reliable reporting.
-
-- Cleaned and standardized product, state, country, and payment fields.
-- Prepared date fields for monthly and yearly analysis.
-- Separated zero-value test orders for traceability.
-- Kept INR and USD sales separate in the sales analysis.
-- Prepared product-level information for demand and revenue comparisons.
-- Used Power Query to transform data for reporting and visualization.
-
-## DAX Measures
-
-The following examples illustrate key measures used in the sales analysis. Table and column names must match the actual Power BI model.
-
-### Total Orders
-
-```dax
+**DAX Measures**
+Core Measures
+Total Orders
+dax
 Total Orders =
 DISTINCTCOUNT(
     'padanjaly-order export0 csv'[order_id]
 )
-```
-
-### Total Sales INR
-
-```dax
+Total Sales INR
+dax
 Total Sales INR =
 SUM(
     'padanjaly-order export0 csv'[order_subtotal]
 )
-```
-
-### Total Sales USD
-
-```dax
+Total Sales USD
+dax
 Total Sales USD =
 VAR Rate =
     FIRSTNONBLANK(
@@ -140,41 +118,32 @@ RETURN
         [Total Sales INR],
         Rate
     )
-```
 
-*Note: Validate the exchange-rate methodology and currency-specific totals before using the converted figures for financial reporting.*
+Note: Validate the exchange-rate methodology and currency-specific totals before using the converted figures for financial reporting.
 
-### International Share %
-
-```dax
+Geography Measures
+International Share %
+dax
 International Share % =
 DIVIDE(
     [International Orders],
     [Total Orders]
 )
-```
-
-### Domestic Share %
-
-```dax
+Domestic Share %
+dax
 Domestic Share % =
 1 - [International Share %]
-```
-
-### Average Quantity per Order
-
-```dax
+Product Measures
+Average Quantity per Order
+dax
 Average Quantity per Order =
 DIVIDE(
     SUM('full_Product'[Quantity]),
     DISTINCTCOUNT('full_Product'[order_id]),
     0
 )
-```
-
-### Most Sold Product
-
-```dax
+Most Sold Product
+dax
 Most Sold Product =
 VAR ProductSales =
     TOPN(
@@ -194,42 +163,116 @@ RETURN
         'full_Product'[Name],
         ", "
     )
-```
+Customer Purchase Behavior Measures
+Registered Customers
+dax
+Registered Customers =
+CALCULATE(
+    DISTINCTCOUNT('padanjaly-order export0 csv'[customer_id]),
+    'padanjaly-order export0 csv'[customer_id] <> 0
+)
+Repeat Customers
+dax
+Repeat Customers =
+CALCULATE(
+    DISTINCTCOUNT('padanjaly-order export0 csv'[customer_id]),
+    'padanjaly-order export0 csv'[Customer Type] = "Repeat"
+)
+Repeat Rate
+dax
+Repeat Rate =
+DIVIDE(
+    [Repeat Customers],
+    [Registered Customers]
+)
+Registered Orders
+dax
+Registered Orders =
+CALCULATE(
+    [Total Orders],
+    'padanjaly-order export0 csv'[customer_id] <> 0
+)
+Orders per Customer
+dax
+Orders per Customer =
+DIVIDE(
+    [Registered Orders],
+    [Registered Customers]
+)
+Customer Purchase Value
+dax
+Customer Purchase Value =
+SUM('padanjaly-order export0 csv'[order_subtotal])
+Average Customer Value
+dax
+Average Customer Value =
+DIVIDE(
+    CALCULATE(
+        [Total Sales INR],
+        'padanjaly-order export0 csv'[customer_id] <> 0
+    ),
+    [Registered Customers]
+)
+Customer Calculated Columns
 
-These are representative measures from the project analysis, not a complete list of every measure in the three reports.
+These are created as New column in the main table, not as measures.
 
-## Business Recommendations
+Customer Type
+dax
+Customer Type =
+VAR CustID = 'padanjaly-order export0 csv'[customer_id]
+VAR OrderCnt =
+    CALCULATE(
+        DISTINCTCOUNT('padanjaly-order export0 csv'[order_id]),
+        ALLEXCEPT(
+            'padanjaly-order export0 csv',
+            'padanjaly-order export0 csv'[customer_id]
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(CustID) || CustID = 0,
+        "Guest",
+        IF(OrderCnt > 1, "Repeat", "First-Time")
+    )
+Customer Order Count
+dax
+Customer Order Count =
+VAR CustID = 'padanjaly-order export0 csv'[customer_id]
+RETURN
+IF(
+    ISBLANK(CustID) || CustID = 0,
+    BLANK(),
+    CALCULATE(
+        DISTINCTCOUNT('padanjaly-order export0 csv'[order_id]),
+        ALLEXCEPT(
+            'padanjaly-order export0 csv',
+            'padanjaly-order export0 csv'[customer_id]
+        )
+    )
+)
+Order Frequency Band
+dax
+Order Frequency Band =
+VAR Orders = 'padanjaly-order export0 csv'[Customer Order Count]
+RETURN
+    SWITCH(
+        TRUE(),
+        ISBLANK(Orders), BLANK(),
+        Orders >= 5, "5+",
+        FORMAT(Orders, "0")
+    )
+Order Frequency Sort
 
-1. **Monitor processing orders:** Review pending and processing orders to identify delays and improve fulfillment.
-2. **Investigate sales peaks:** Analyze high-performing months to identify potential campaign, seasonal, or market-related drivers.
-3. **Maintain best-selling products:** Prioritize inventory planning for Agnijith 90 gms and other high-demand products.
-4. **Improve lower-demand products:** Evaluate product positioning, pricing, and promotion opportunities.
-5. **Prioritize geographic markets:** Use state and country performance to guide marketing and distribution decisions.
-6. **Explore international growth:** Investigate opportunities to increase international orders while monitoring fulfillment and market requirements.
-7. **Track performance consistently:** Update dashboards regularly to monitor sales, demand, and geographic trends.
+Used to sort Order Frequency Band as 1, 2, 3, 5+ (Column tools → Sort by column).
 
-## Tools & Technologies
+dax
+Order Frequency Sort =
+VAR Orders = 'padanjaly-order export0 csv'[Customer Order Count]
+RETURN
+    IF(
+        ISBLANK(Orders),
+        BLANK(),
+        MIN(Orders, 5)
+    )
 
-- Microsoft Power BI
-- Power Query
-- DAX (Data Analysis Expressions)
-- WooCommerce data
-- Data Cleaning and Transformation
-- KPI Development
-- Data Visualization
-- Sales and Product Demand Analysis
-
-## Limitations
-
-- Dashboard figures have not been independently audited.
-- The 2026 sales and demand figures cover January through July, representing partial-year data.
-- INR and USD sales are reported separately; currency conversion should be validated before financial comparisons.
-- Domestic and international percentages represent order shares, not sales revenue shares.
-- Geographic findings reflect the values displayed in the dashboard and should be checked against the underlying dataset before making business decisions.
-- The reported product quantities and sales values should be validated against the final Power BI model.
-
-## Project Objective
-
-The objective of this project is to demonstrate practical business intelligence skills by converting WooCommerce data into useful insights about sales performance, product demand, and geographic distribution.
-
-The three dashboards provide complementary perspectives on business performance and demonstrate the application of data cleaning, data modeling, DAX calculations, and interactive visualization using Power BI.
