@@ -39,12 +39,17 @@ The main objective is to understand:
 
 | File | Description |
 |---|---|
-| `product--dashboard--padanjaly.pdf` | Source dashboard report and product demand data |
-| `product-PBIX-dashboard--padanjaly.pbix` | Power BI dashboard file |
-| `Sales Geography PDF` | Geographic sales analysis reference |
-| `Sales Performance PDF` | Revenue and sales performance reference |
-| `README.md` | Project documentation |
-
+| File                                                    | Description                                    |
+| -----------------------------------------------------   | ---------------------------------------------- |
+| README.md                                               | Project overview and calculation documentation |
+| '-customer-PBIX-dashboard--padanjaly Copy.pdf'          | Customer dashboard PDF                         |
+| 'customer-PBIX-dashboard--padanjaly.pbix'               | Customer dashboard Power BI report             |
+| 'padanjaly-order-cleaning-dashboard-POwer.pbix'         | Order / sales dashboard Power BI report        |
+| 'padanjaly-order-cleaning-dashboard-pdf.pdf'            | Order / sales dashboard PDF                    |
+| 'product--dashboard--padanjaly.pdf'                     | Product demand dashboard PDF                   |
+| 'product-PBIX-dashboard--padanjaly.pbix'                | Product demand Power BI report                 |
+| 'updated-padanjaly--dashboard-Sales-geography Copy.pdf' | Sales geography dashboard PDF                  |
+| 'updated-padanjaly--dashboard-Sales-geography.pbix'     | Sales geography Power BI report                |
 ---
 
 ## 🧱 Data Model
